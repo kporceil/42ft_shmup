@@ -1,0 +1,11 @@
+# Binaries / Objects
+.build/
+*.o
+*.d
+*.out
+ft_shmup
+
+# Environment
+debug_*
+*.swp
+
