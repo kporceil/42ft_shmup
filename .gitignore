@@ -9,3 +9,6 @@ ft_shmup
 debug_*
 *.swp
 
+# Self
+.gitignore
+
