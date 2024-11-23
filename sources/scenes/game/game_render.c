@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   main_menu_render.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 02:17:35 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/23 02:19:57 by jureix-c         ###   ########.fr       */
+/*   Created: 2024/11/22 23:16:06 by jureix-c          #+#    #+#             */
+/*   Updated: 2024/11/23 05:28:24 by jureix-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include <ncurses.h>
 
-// GAME RENDER
+#include "game.h"
 
-// NCURSES
-void	ft_init_ncurses();
-void	ft_del_ncurses();
+/**
+ * Render the game screen.
+ * 
+ * @param game_data Game data.
+ */
+void	ft_game_render(t_game_data *game_data)
+{
+	clear();  // Clear screen
 
-#endif
+	refresh();  // Dump screen to terminal
+}

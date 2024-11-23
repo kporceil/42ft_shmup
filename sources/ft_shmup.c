@@ -16,9 +16,15 @@
 #include "scenes.h"
 #include "render.h"
 
-t_game_state	state = STATE_MAIN_MENU;
-bool			loop = true;
+// Global variables
+t_game_state	state = STATE_MAIN_MENU;  // Current game state
+bool			loop = true;  // Main loop flag of any scene
 
+/**
+ * Entry point of the shmup game.
+ *
+ * @return The error code.
+ */
 int	ft_shmup(void)
 {
 	int				err_code = 0;
@@ -33,6 +39,14 @@ int	ft_shmup(void)
 		{
 			case STATE_MAIN_MENU:
 				err_code = ft_main_menu();
+				break;
+			case STATE_SETTINGS:
+				//err_code = ft_settings();
+				break;
+			case STATE_GAME:
+				err_code = ft_game();
+				break;
+			case STATE_EXIT:
 				break;
 		}
 	}

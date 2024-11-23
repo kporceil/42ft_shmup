@@ -14,7 +14,7 @@
 #include <ncurses.h>
 
 /**
- * This function initializes everything necessary for ncurses to render on screen
+ * This function initializes everything necessary for ncurses to render on screen.
  */
 void	ft_init_ncurses()
 {
@@ -33,6 +33,9 @@ void	ft_init_ncurses()
 	clear();  // Clear screen
 }
 
+/**
+ * This function cleans up everything initialized by ft_init_ncurses.
+ */
 void	ft_del_ncurses()
 {
 	clear();

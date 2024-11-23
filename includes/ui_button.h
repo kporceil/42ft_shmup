@@ -15,6 +15,7 @@
 
 # include <stdbool.h>
 
+// Button struct
 typedef struct	s_ui_button
 {
 	// Base values
