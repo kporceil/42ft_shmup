@@ -31,7 +31,6 @@ int	ft_main_menu()
 	// Fetch screen size
 	int	max_y;
 	int	max_x;
-	getmaxyx(stdscr, max_y, max_x);
 
 	// Init buttons
 	t_ui_button *buttons[] = {
@@ -54,6 +53,7 @@ int	ft_main_menu()
 	loop = true;  // Main loop flag
 	while (loop)
 	{
+		getmaxyx(stdscr, max_y, max_x); // Define screen size at each iteration for dynamic resizing
 		// Handle input
 		ft_main_menu_input(&should_render, &current_highlight);
 
