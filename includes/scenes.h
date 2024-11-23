@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   scenes.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 02:17:35 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/23 02:19:57 by jureix-c         ###   ########.fr       */
+/*   Created: 2024/11/23 02:20:16 by jureix-c          #+#    #+#             */
+/*   Updated: 2024/11/23 02:20:51 by jureix-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#ifndef SCENES_H
+# define SCENES_H
 
-// NCURSES
-void	ft_init_ncurses();
-void	ft_del_ncurses();
+int	ft_menu(void);
 
 #endif
