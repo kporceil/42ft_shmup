@@ -14,6 +14,11 @@
 
 #include "game.h"
 
+/**
+ * Initializes the game data.
+ *
+ * @return The game data.
+ */
 t_game_data	*ft_game_init(void)
 {
 	t_game_data	*game_data;
@@ -25,6 +30,11 @@ t_game_data	*ft_game_init(void)
 	return (game_data);
 }
 
+/**
+ * Cleans up everything initialized by ft_game_init.
+ *
+ * @param game_data The game data to delete.
+ */
 void	ft_game_del(t_game_data *game_data)
 {
 	// TODO: Free game_data

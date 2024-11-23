@@ -18,10 +18,10 @@
 #include "ui_button.h"
 
 /**
- * Handle inputs for main_menu scene
+ * Handle inputs for main_menu scene.
  *
- * @param should_render		Update by reference the variable that indicates a need for a refresh
- * @param current_highlight	Update by reference the currently highlighted button
+ * @param should_render		Update by reference the variable that indicates a need for a refresh.
+ * @param current_highlight	Update by reference the currently highlighted button.
  */
 void	ft_main_menu_input(bool *should_render, t_ui_button **current_highlight)
 {

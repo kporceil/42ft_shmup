@@ -18,6 +18,11 @@
 #include "scenes.h"
 #include "game.h"
 
+/**
+ * Main menu scene.
+ *
+ * @return The error code.
+ */
 int	ft_game(void)
 {
 	t_game_data	*game_data;

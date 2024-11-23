@@ -16,6 +16,16 @@
 
 #include "ui_button.h"
 
+/**
+ * Creates a new UI button.
+ *
+ * @param y The y position of the button.
+ * @param x The x position of the button.
+ * @param content The content of the button.
+ * @param trigger The function to call when the button is clicked.
+ * @param mouse_clickable Whether the button is clickable with the mouse.
+ * @return The new button.
+ */
 t_ui_button	*ft_new_btn(int y, int x, char *content, void (*trigger)(void), bool mouse_clickable)
 {
 	t_ui_button	*btn;
@@ -45,6 +55,11 @@ t_ui_button	*ft_new_btn(int y, int x, char *content, void (*trigger)(void), bool
 	return (btn);
 }
 
+/**
+ * Deletes a UI button.
+ *
+ * @param btn The button to delete.
+ */
 void	ft_del_btn(t_ui_button *btn)
 {
 	if (btn->content)

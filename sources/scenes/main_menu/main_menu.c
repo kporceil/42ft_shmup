@@ -21,6 +21,11 @@ void	ft_new_game_trigger();
 void	ft_settings_trigger();
 void	ft_exit_trigger();
 
+/**
+ * Main menu scene.
+ *
+ * @return The error code.
+ */
 int	ft_main_menu()
 {
 	// Fetch screen size
