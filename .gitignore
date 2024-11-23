@@ -9,6 +9,9 @@ ft_shmup
 debug_*
 *.swp
 
+# Makefile temp files
+.subdirstate
+
 # Self
 .gitignore
 

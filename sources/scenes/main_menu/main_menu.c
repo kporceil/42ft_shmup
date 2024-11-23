@@ -31,7 +31,7 @@ int	ft_main_menu()
 	// Fetch screen size
 	int	max_y;
 	int	max_x;
-	getmaxyx(stdscr, max_y, max_x);
+	getmaxyx(stdscr, max_y, max_x); // Define screen size
 
 	// Init buttons
 	t_ui_button *buttons[] = {
@@ -55,7 +55,7 @@ int	ft_main_menu()
 	while (loop)
 	{
 		// Handle input
-		ft_main_menu_input(&should_render, &current_highlight);
+		ft_main_menu_input(&should_render, &current_highlight, &max_y, &max_x);
 
 		// Render if necessary or if first_render
 		if (should_render || first_render)
