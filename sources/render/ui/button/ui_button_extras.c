@@ -14,12 +14,19 @@
 
 #include "ui_button.h"
 
+/**
+ * Renders the extras of a UI button, including the border and the padding.
+ * Uses ACS_* constants from ncurses, same result as the default window technique.
+ *
+ * @param btn The button to render.
+ */
 void	ft_render_btn_extras(const t_ui_button *btn)
 {
-	int	ch;
+	int	ch;  // Char to print
 	int	height = ft_height_btn(btn);
 	int	width = ft_width_btn(btn);
 
+	// Go over each character occupied by the button hitbox
 	for (int i = 0; i < height; i++) {
 		for (int j = 0; j < width; j++) {
 			ch = ' ';  // Defaults to space
@@ -30,7 +37,6 @@ void	ft_render_btn_extras(const t_ui_button *btn)
 				if (i == 0)
 				{
 					if (j == 0) {
-						//ch = L_UPPER_LEFT;
 						ch = ACS_ULCORNER;
 					} else if (j == width - 1) {
 						ch = ACS_URCORNER;

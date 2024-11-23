@@ -17,6 +17,8 @@
 
 # include "ui_button.h"
 
+// Game state (current scene)
+//TODO: Maybe rename to t_scene?
 typedef enum	e_game_state
 {
 	STATE_EXIT,
@@ -25,9 +27,11 @@ typedef enum	e_game_state
 	STATE_GAME
 }				t_game_state;
 
+// Global variables
 extern t_game_state	state;
 extern bool			loop;
 
+// Main menu
 int		ft_main_menu();
 void	ft_main_menu_input(bool *should_render, t_ui_button **current_highlight);
 void	ft_main_menu_render(const t_ui_button **btns, const t_ui_button *current_highlight);

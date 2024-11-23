@@ -17,15 +17,16 @@
 //TODO: Make this UI rendering function global for all scenes
 
 /**
- * Renders UI elements on the screen
+ * Renders UI elements on the screen.
  *
- * @param btns Array of buttons to render
+ * @param btns Array of buttons to render.
  */
 void	ft_main_menu_render(const t_ui_button **btns, const t_ui_button *current_highlight)
 {
 	clear();  // Clear screen
 
 	// Render labels
+	//TODO: Implement labels
 
 	// Render buttons
 	for (int i = 0; btns[i]; i++)
