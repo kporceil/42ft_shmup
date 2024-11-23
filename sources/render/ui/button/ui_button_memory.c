@@ -6,7 +6,7 @@
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 23:40:36 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/23 01:49:25 by jureix-c         ###   ########.fr       */
+/*   Updated: 2024/11/23 03:13:46 by jureix-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ t_ui_button	*ft_new_btn(int y, int x, char *content, void (*trigger)(void), bool
 	// Default values
 	btn->prev_highlight = NULL;
 	btn->next_highlight = NULL;
+	btn->has_borders = true;
+	btn->y_padding = 0;
+	btn->x_padding = 1;
 	btn->disabled = false;
 	return (btn);
 }
