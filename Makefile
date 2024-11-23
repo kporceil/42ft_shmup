@@ -12,7 +12,7 @@ INCLUDES := includes
 
 DEPSFLAGS := -MD -MP -MF
 
-LIBFLAGS := -lncursesw
+LIBFLAGS := -lncursesw -lm
 
 MAKEFLAGS += --no-print-directory
 
