@@ -33,7 +33,7 @@ extern bool			loop;
 
 // Main menu
 int		ft_main_menu();
-void	ft_main_menu_input(bool *should_render, t_ui_button **current_highlight);
+void	ft_main_menu_input(bool *should_render, t_ui_button **current_highlight, int *y, int *x);
 void	ft_main_menu_render(const t_ui_button **btns, const t_ui_button *current_highlight);
 
 #endif

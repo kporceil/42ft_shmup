@@ -23,7 +23,7 @@
  * @param should_render		Update by reference the variable that indicates a need for a refresh.
  * @param current_highlight	Update by reference the currently highlighted button.
  */
-void	ft_main_menu_input(bool *should_render, t_ui_button **current_highlight)
+void	ft_main_menu_input(bool *should_render, t_ui_button **current_highlight, int *y, int *x)
 {
 	int	key = getch();
 	*should_render = true;
@@ -45,6 +45,7 @@ void	ft_main_menu_input(bool *should_render, t_ui_button **current_highlight)
 			break;
 		// On resize
 		case KEY_RESIZE:
+			getmaxyx(stdscr, *y, *x);
 			break;
 		default:
 			*should_render = false;
