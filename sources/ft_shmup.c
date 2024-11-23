@@ -6,7 +6,7 @@
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 02:21:45 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/23 03:55:56 by jureix-c         ###   ########.fr       */
+/*   Updated: 2024/11/23 05:12:14 by jureix-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include "scenes.h"
 #include "render.h"
 
-t_game_state state = STATE_MAIN_MENU;
+t_game_state	state = STATE_MAIN_MENU;
+bool			loop = true;
 
 int	ft_shmup(void)
 {

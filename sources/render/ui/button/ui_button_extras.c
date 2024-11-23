@@ -14,7 +14,7 @@
 
 #include "ui_button.h"
 
-void	ft_render_btn_extras(t_ui_button *btn)
+void	ft_render_btn_extras(const t_ui_button *btn)
 {
 	int	ch;
 	int	height = ft_height_btn(btn);

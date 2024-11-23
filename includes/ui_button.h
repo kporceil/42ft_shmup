@@ -39,15 +39,15 @@ t_ui_button	*ft_new_btn(int y, int x, char *content, void (*trigger)(void), bool
 void		ft_del_btn(t_ui_button *btn);
 
 // ACTIONS
-void		ft_render_btn(t_ui_button *btn, t_ui_button *highlight);
-void		ft_trigger_btn(t_ui_button *btn);
+void		ft_render_btn(const t_ui_button *btn, const t_ui_button *highlight);
+void		ft_trigger_btn(const t_ui_button *btn);
 void		ft_move_btn(t_ui_button *btn, int y, int x);
 
 // UTILS
-int			ft_height_btn(t_ui_button *btn);
-int			ft_width_btn(t_ui_button *btn);
+int			ft_height_btn(const t_ui_button *btn);
+int			ft_width_btn(const t_ui_button *btn);
 
 // VISUAL EXTRA
-void		ft_render_btn_extras(t_ui_button *btn);
+void		ft_render_btn_extras(const t_ui_button *btn);
 
 #endif
