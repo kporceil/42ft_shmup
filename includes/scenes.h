@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   scenes.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/22 23:16:06 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/23 02:24:43 by jureix-c         ###   ########.fr       */
+/*   Created: 2024/11/23 02:20:16 by jureix-c          #+#    #+#             */
+/*   Updated: 2024/11/23 02:20:51 by jureix-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef SCENES_H
+# define SCENES_H
 
-int	ft_shmup(void);
+int	ft_menu(void);
 
-int	main(int ac, char **av)
-{
-	int	err_code;
-
-	err_code = ft_shmup();
-	return (err_code);
-}
+#endif
