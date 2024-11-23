@@ -14,7 +14,7 @@
 
 #include "ui_button.h"
 
-void	ft_render_btn(t_ui_button *btn, t_ui_button *highlight)
+void	ft_render_btn(const t_ui_button *btn, const t_ui_button *highlight)
 {
 	if (btn == highlight)
 		attron(COLOR_PAIR(2));
@@ -24,7 +24,7 @@ void	ft_render_btn(t_ui_button *btn, t_ui_button *highlight)
 		attroff(COLOR_PAIR(2));
 }
 
-void	ft_trigger_btn(t_ui_button *btn)
+void	ft_trigger_btn(const t_ui_button *btn)
 {
 	if (btn->trigger && !btn->disabled)
 		btn->trigger();

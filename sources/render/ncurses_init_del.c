@@ -27,6 +27,9 @@ void	ft_init_ncurses()
 	curs_set(false);  // Hide cursor
 	keypad(stdscr, true);  // Handle cursor and special keys
 
+	init_pair(1, COLOR_WHITE, COLOR_BLACK);  // Normal color pair
+	init_pair(2, COLOR_BLACK, COLOR_WHITE);  // Reversed color pair
+
 	clear();  // Clear screen
 }
 

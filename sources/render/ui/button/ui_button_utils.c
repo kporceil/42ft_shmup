@@ -14,12 +14,12 @@
 
 #include "ui_button.h"
 
-int	ft_height_btn(t_ui_button *btn)
+int	ft_height_btn(const t_ui_button *btn)
 {
 	return (1 + (btn->has_borders ? 2 : 0) + btn->y_padding * 2);
 }
 
-int	ft_width_btn(t_ui_button *btn)
+int	ft_width_btn(const t_ui_button *btn)
 {
 	return (strlen(btn->content) + (btn->has_borders ? 2 : 0) + btn->x_padding * 2);
 }
