@@ -34,6 +34,14 @@ int	ft_shmup(void)
 			case STATE_MAIN_MENU:
 				err_code = ft_main_menu();
 				break;
+			case STATE_SETTINGS:
+				//err_code = ft_settings();
+				break;
+			case STATE_GAME:
+				err_code = ft_game();
+				break;
+			case STATE_EXIT:
+				break;
 		}
 	}
 

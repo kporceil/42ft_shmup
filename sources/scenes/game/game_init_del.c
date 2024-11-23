@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   game_init_del.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 02:17:35 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/23 02:19:57 by jureix-c         ###   ########.fr       */
+/*   Created: 2024/11/23 07:40:21 by jureix-c          #+#    #+#             */
+/*   Updated: 2024/11/23 07:40:22 by jureix-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include <stdlib.h>
 
-// GAME RENDER
+#include "game.h"
 
-// NCURSES
-void	ft_init_ncurses();
-void	ft_del_ncurses();
+t_game_data	*ft_game_init(void)
+{
+	t_game_data	*game_data;
 
-#endif
+	game_data = malloc(sizeof(t_game_data));
+	if (!game_data)
+		return (NULL);
+	// TODO: Initialize game_data
+	return (game_data);
+}
+
+void	ft_game_del(t_game_data *game_data)
+{
+	// TODO: Free game_data
+	free(game_data);
+}
