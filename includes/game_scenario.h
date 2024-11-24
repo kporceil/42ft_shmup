@@ -31,7 +31,7 @@ typedef enum	e_game_scenario
 								scenario == GAME_SCENARIO_MEDIUM ? 20 : \
 								scenario == GAME_SCENARIO_HARD ? 30 : \
 								scenario == GAME_SCENARIO_WW3 ? 50 : \
-								scenario == GAME_SCENARIO_DOOMSDAY ? 100 : \
+								scenario == GAME_SCENARIO_DOOMSDAY ? 200 : \
 								scenario == GAME_SCENARIO_MULTIPLAYER ? 20 : 0)
 
 // MACROS FOR MOVEMENTS
@@ -61,7 +61,7 @@ typedef enum	e_game_scenario
 								scenario == GAME_SCENARIO_MEDIUM ? 200 : \
 								scenario == GAME_SCENARIO_HARD ? 300 : \
 								scenario == GAME_SCENARIO_WW3 ? 500 : \
-								scenario == GAME_SCENARIO_DOOMSDAY ? 1000 : \
+								scenario == GAME_SCENARIO_DOOMSDAY ? 100 : \
 								scenario == GAME_SCENARIO_MULTIPLAYER ? 200 : 0)
 
 # define SCORE_REWARD(scenario) (scenario == GAME_SCENARIO_EASY ? 10 : \
