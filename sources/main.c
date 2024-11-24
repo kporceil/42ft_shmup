@@ -14,7 +14,7 @@
 
 int	ft_shmup(void);
 
-int	main(int ac, char **av)
+int	main(void)
 {
 	int	err_code;
 

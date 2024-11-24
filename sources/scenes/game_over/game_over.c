@@ -32,4 +32,5 @@ int	ft_game_over()
 	while (getch() != 32)
 		;
 	state = STATE_MAIN_MENU;
+	return (0);
 }

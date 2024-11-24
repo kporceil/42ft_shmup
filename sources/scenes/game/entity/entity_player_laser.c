@@ -23,6 +23,7 @@ void	*init_entity_player_laser(t_game_data *game_data)
 {
 	t_entity_player_laser	*entity;
 
+	(void)game_data;
 	entity = malloc(sizeof(t_entity_player_laser));
 	if (!entity)
 		return (NULL);

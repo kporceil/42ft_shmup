@@ -130,6 +130,8 @@ void ft_game_update(t_game_data *game_data)
 					entity_delone(entity);
 				}
 				break;
+			default:
+				break;
 		}
 		entity = tmp;
 	}
