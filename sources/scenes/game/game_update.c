@@ -72,7 +72,7 @@ void ft_game_update(t_game_data *game_data)
 			case ENTITY_PLAYER_SHIP:
 			{
 				t_entity_player_ship *p_ship = (t_entity_player_ship *)entity->data;
-				if (p_ship->health <= 0)
+				if (p_ship->health <= 0 || p_ship->score < 0)
 				{
 					last_game_score = p_ship->score;
 					state = STATE_GAME_OVER;
