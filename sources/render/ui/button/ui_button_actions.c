@@ -13,6 +13,7 @@
 #include <ncurses.h>
 
 #include "ui_button.h"
+#include "render.h"
 
 /**
  * Renders a UI button.
@@ -23,12 +24,12 @@ void	ft_render_btn(const t_ui_button *btn, const t_ui_button *highlight)
 {
 	// Highlight
 	if (btn == highlight)
-		attron(COLOR_PAIR(2));
+		attron(COLOR_PAIR(BLACK_ON_WHITE));
 	ft_render_btn_extras(btn);  // Render extras (border and padding)
 	mvprintw(btn->y, btn->x, "%s", btn->content);
 	// Remove highlight
 	if (btn == highlight)
-		attroff(COLOR_PAIR(2));
+		attroff(COLOR_PAIR(BLACK_ON_WHITE));
 }
 
 /**

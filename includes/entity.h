@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   entities.h                                         :+:      :+:    :+:   */
+/*   entity.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kporceil <kporceil@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 22:05:19 by kporceil          #+#    #+#             */
-/*   Updated: 2024/11/23 23:29:28 by kporceil         ###   ########lyon.fr   */
+/*   Updated: 2024/11/24 21:06:32 by jureix-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,17 @@ typedef struct	s_entity
 	struct s_entity	*next;
 }				t_entity;
 
+// PLAYER INPUT
+typedef enum	e_player_input
+{
+	PLAYER_INPUT_NONE,
+	PLAYER_INPUT_MOVE_UP,
+	PLAYER_INPUT_MOVE_DOWN,
+	PLAYER_INPUT_MOVE_LEFT,
+	PLAYER_INPUT_MOVE_RIGHT,
+	PLAYER_INPUT_FIRE,
+}				t_player_input;
+
 // ENTITIES TYPES
 typedef struct	s_entity_player_ship
 {	
@@ -77,6 +88,7 @@ typedef struct	s_entity_player_ship
 	int				health;
 	double			cooldown;
 	bool			power_up;
+	int				color;
 	unsigned char	icon;
 }				t_entity_player_ship;
 
@@ -93,6 +105,7 @@ typedef struct	s_entity_enemy_ship
 {
 	int				health;
 	double			cooldown;
+	int				color;
 	unsigned char	icon;
 }				t_entity_enemy_ship;
 
@@ -109,6 +122,7 @@ typedef struct	s_entity_enemy_bomb
 	int				damage;
 	int				radius;
 	int				health;
+	int				color;
 	unsigned char	icon;
 }				t_entity_enemy_bomb;
 

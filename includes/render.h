@@ -13,6 +13,17 @@
 #ifndef RENDER_H
 # define RENDER_H
 
+// COLORS
+# define WHITE 1
+# define BLUE 2
+# define RED 3
+# define RED_ON_MAGENTA 4
+# define GREEN 5
+# define YELLOW 6
+# define CYAN 7
+# define MAGENTA 8
+# define BLACK_ON_WHITE 9
+
 // GAME RENDER
 
 // NCURSES

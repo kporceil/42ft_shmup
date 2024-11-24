@@ -17,6 +17,7 @@
 #include "game_scenario.h"
 #include "entity.h"
 #include "physics.h"
+#include "render.h"
 
 void	*init_entity_player_ship(t_game_data *game_data)
 {
@@ -30,6 +31,7 @@ void	*init_entity_player_ship(t_game_data *game_data)
 	entity->health = PLAYER_HP(game_data->scenario);
 	entity->power_up = false;
 	entity->icon = 'G';
+	entity->color = GREEN;
 	return ((void *)entity);
 }
 
@@ -84,20 +86,18 @@ void	handle_entity_player_ship_collisions(t_entity *entity, t_game_data *game_da
 
 void	render_entity_player_ship(t_entity *entity, t_game_data *game_data)
 {
-	if (entity->next_y != entity->y || entity->next_x != entity->x || game_data->resized)
-	{
-		entity->y = entity->next_y;
-		entity->x = entity->next_x;
-		mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ((t_entity_player_ship *) entity->data)->icon);
-	}
+	entity->y = entity->next_y;
+	entity->x = entity->next_x;
+	attron(COLOR_PAIR(((t_entity_player_ship *) entity->data)->color));
+	mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ((t_entity_player_ship *) entity->data)->icon);
+	attroff(COLOR_PAIR(((t_entity_player_ship *) entity->data)->color));
 	mvprintw(getmaxy(stdscr) - 2, 1, "                      ");
 	mvprintw(getmaxy(stdscr) - 2, 1, "Health : %d", ((t_entity_player_ship *)entity->data)->health);
 }
 
 void	unrender_entity_player_ship(t_entity *entity, t_game_data *game_data)
 {
-	if (entity->next_y != entity->y || entity->next_x != entity->x)
-		mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ' ');
+	mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ' ');
 }
 
 void	del_entity_player_ship(t_entity_player_ship *data)

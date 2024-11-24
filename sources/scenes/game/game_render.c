@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdbool.h>
 #include <ncurses.h>
 
@@ -25,7 +26,7 @@ void	ft_game_render(t_game_data *game_data)
 {
 	t_entity *entity;
 
-	//ft_game_render_scene_background(game_data);  // Render background
+	ft_game_render_scene_background(game_data);  // Render background
 	if (game_data->resized) {
 		clear();
 		ft_game_render_scene_borders(game_data);  // Render scene borders
@@ -58,8 +59,71 @@ void	ft_game_render(t_game_data *game_data)
  */
 void	ft_game_render_scene_background(t_game_data *game_data)
 {
+	// Ensure background layer are initialized
+	for (int i = 0; i < 3; i++)
+	{
+		if (game_data->background_layers[i].star_count == 0)
+		{
+			game_data->background_layers[i].star_count = BACKGROUND_LAYER_COUNT(i);
+			game_data->background_layers[i].star_speed = BACKGROUND_LAYER_SPEED(i);
+			game_data->background_layers[i].star_char = BACKGROUND_LAYER_CHAR(i);
+			game_data->background_layers[i].star_color = BACKGROUND_LAYER_COLOR(i);
+			ft_game_init_background_layer(game_data, game_data->background_layers + i);
+		}
+	}
+
+	// Unrender background and move stars by their speed
+	for (int i = 0; i < 3; i++)
+	{
+		ft_game_unrender_background_layer(game_data, game_data->background_layers + i);
+		for (int j = 0; j < game_data->background_layers[i].star_count; j++)
+		{
+			game_data->background_layers[i].stars[j].y += game_data->background_layers[i].star_speed * game_data->delta_time;
+			if (game_data->background_layers[i].stars[j].y > SCENE_HEIGHT)
+			{
+				game_data->background_layers[i].stars[j].y = 0;
+				game_data->background_layers[i].stars[j].x = rand() % SCENE_WIDTH;
+			}
+		}
+	}
 	
-	return ;
+	// Render background
+	for (int i = 0; i < 3; i++)
+		ft_game_render_background_layer(game_data, game_data->background_layers + i);
+}
+
+void	ft_game_init_background_layer(t_game_data *game_data, t_background_layer *layer)
+{
+	layer->stars = malloc(sizeof(t_star) * layer->star_count);
+	for (int i = 0; i < layer->star_count; i++)
+	{
+		layer->stars[i].x = rand() % SCENE_WIDTH;
+		layer->stars[i].y = rand() % SCENE_HEIGHT;
+	}
+}
+
+void	ft_game_render_background_layer(t_game_data *game_data, t_background_layer *layer)
+{
+	attron(COLOR_PAIR(layer->star_color));
+	for (int i = 0; i < layer->star_count; i++)
+	{
+		mvaddch(game_data->scene_y_origin + layer->stars[i].y, game_data->scene_x_origin + layer->stars[i].x, layer->star_char);
+	}
+	attroff(COLOR_PAIR(layer->star_color));
+}
+
+void	ft_game_unrender_background_layer(t_game_data *game_data, t_background_layer *layer)
+{
+	for (int i = 0; i < layer->star_count; i++)
+	{
+		mvaddch(game_data->scene_y_origin + layer->stars[i].y, game_data->scene_x_origin + layer->stars[i].x, ' ');
+	}
+}
+
+void	ft_game_del_background_layer(t_background_layer *layer)
+{
+	free(layer->stars);
+	layer->star_count = 0;
 }
 
 /**

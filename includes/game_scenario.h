@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scenarios.h                                        :+:      :+:    :+:   */
+/*   game_scenario.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 00:40:56 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/24 00:41:21 by jureix-c         ###   ########.fr       */
+/*   Updated: 2024/11/24 21:09:59 by jureix-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_SCENARIO_H
 # define GAME_SCENARIO_H
+
+# include "render.h"
 
 // GAME SCENARIO
 typedef enum	e_game_scenario
@@ -76,5 +78,22 @@ typedef enum	e_game_scenario
 								scenario == GAME_SCENARIO_WW3 ? 500 : \
 								scenario == GAME_SCENARIO_DOOMSDAY ? 100 : \
 								scenario == GAME_SCENARIO_MULTIPLAYER ? 200 : 0)
+
+// BACKGROUND LAYERS
+# define BACKGROUND_LAYER_COUNT(layer) (layer == 0 ? 30 : \
+								layer == 1 ? 20 : \
+								layer == 2 ? 3 : 0)
+
+# define BACKGROUND_LAYER_SPEED(layer) (layer == 0 ? 0.005 : \
+								layer == 1 ? 0.01 : \
+								layer == 2 ? 0.3 : 0)
+
+# define BACKGROUND_LAYER_CHAR(layer) (layer == 0 ? '.' : \
+								layer == 1 ? '\'' : \
+								layer == 2 ? '#' : 0)
+
+# define BACKGROUND_LAYER_COLOR(layer) (layer == 0 ? BLUE : \
+								layer == 1 ? MAGENTA : \
+								layer == 2 ? YELLOW : 0)
 
 #endif

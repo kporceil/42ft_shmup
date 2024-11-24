@@ -13,6 +13,8 @@
 #include <stdbool.h>
 #include <ncurses.h>
 
+#include "render.h"
+
 /**
  * This function initializes everything necessary for ncurses to render on screen.
  */
@@ -27,8 +29,17 @@ void	ft_init_ncurses()
 	curs_set(false);  // Hide cursor
 	keypad(stdscr, true);  // Handle cursor and special keys
 
-	init_pair(1, COLOR_WHITE, COLOR_BLACK);  // Normal color pair
-	init_pair(2, COLOR_BLACK, COLOR_WHITE);  // Reversed color pair
+	init_pair(WHITE, COLOR_WHITE, COLOR_BLACK);  // Normal color pair
+	init_pair(BLACK_ON_WHITE, COLOR_BLACK, COLOR_WHITE);  // Reversed color pair
+	
+	// Additional color pairs
+	init_pair(BLUE, COLOR_BLUE, COLOR_BLACK);
+	init_pair(RED, COLOR_RED, COLOR_BLACK);
+	init_pair(GREEN, COLOR_GREEN, COLOR_BLACK);
+	init_pair(YELLOW, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(CYAN, COLOR_CYAN, COLOR_BLACK);
+	init_pair(MAGENTA, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(RED_ON_MAGENTA, COLOR_RED, COLOR_MAGENTA);
 
 	clear();  // Clear screen
 }
