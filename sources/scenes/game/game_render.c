@@ -103,6 +103,7 @@ void	ft_game_init_background_layer(t_background_layer *layer)
 		layer->stars[i].x = rand() % SCENE_WIDTH;
 		layer->stars[i].y = rand() % SCENE_HEIGHT;
 	}
+	(void)game_data;
 }
 
 void	ft_game_render_background_layer(t_game_data *game_data, t_background_layer *layer)

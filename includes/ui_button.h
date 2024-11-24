@@ -51,5 +51,6 @@ void		ft_free_btn_list(t_ui_button **btn_list);
 
 // VISUAL EXTRA
 void		ft_render_btn_extras(const t_ui_button *btn);
+void		ui_render(const t_ui_button **btns, const t_ui_button *current_highlight);
 
 #endif
