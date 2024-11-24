@@ -33,6 +33,6 @@ void	ft_move(float *y, float *x, float velocity, float angle, float delta_time);
 bool	ft_ranges_overlap(float min1, float max1, float min2, float max2);
 bool	ft_rectangles_intersect(float y1, float x1, float h1, float w1, float y2, float x2, float h2, float w2);
 bool	ft_segments_intersect(float a_y1, float a_x1, float a_y2, float a_x2, float b_y1, float b_x1, float b_y2, float b_x2);
-bool	ft_entities_collide(t_entity *entity1, t_entity *entity2);
+bool	ft_entities_collide(t_entity *entity1, t_entity *entity2, float radius);
 
 #endif

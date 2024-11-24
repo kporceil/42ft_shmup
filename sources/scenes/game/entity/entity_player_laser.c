@@ -51,7 +51,7 @@ void	handle_entity_player_laser_collisions(t_entity *entity, t_game_data *game_d
 		switch (entity2->type)
 		{
 			case ENTITY_ENEMY_SHIP:
-				if (ft_entities_collide(entity, entity2))
+				if (ft_entities_collide(entity, entity2, 0.5))
 				{
 					((t_entity_enemy_ship *)entity2->data)->health -= ((t_entity_player_laser *)entity->data)->damage;
 					if (((t_entity_player_laser *)entity->data)->perforation <= 0)

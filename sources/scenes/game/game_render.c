@@ -58,6 +58,7 @@ void	ft_game_render(t_game_data *game_data)
  */
 void	ft_game_render_scene_background(t_game_data *game_data)
 {
+	
 	return ;
 }
 

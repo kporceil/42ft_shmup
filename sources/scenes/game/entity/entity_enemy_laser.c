@@ -51,7 +51,7 @@ void	handle_entity_enemy_laser_collisions(t_entity *entity, t_game_data *game_da
 		switch (entity2->type)
 		{
 			case ENTITY_PLAYER_SHIP:
-				if (ft_entities_collide(entity, entity2))
+				if (ft_entities_collide(entity, entity2, 0.8))
 				{
 					((t_entity_player_ship *)entity2->data)->health -= ((t_entity_enemy_laser *)entity->data)->damage;
 					entity_delone(entity);

@@ -62,7 +62,7 @@ void	handle_entity_player_ship_collisions(t_entity *entity, t_game_data *game_da
 		switch (entity2->type)
 		{
 			case ENTITY_ENEMY_LASER:
-				if ((int)entity->next_x == (int)entity2->next_x && (int)entity->next_y == (int)entity2->next_y)
+				if (ft_entities_collide(entity, entity2, 0.5))
 				{
 					t_entity_enemy_laser *e_laser = (t_entity_enemy_laser *) entity2->data;
 					p_ship->health -= e_laser->damage;
@@ -70,7 +70,7 @@ void	handle_entity_player_ship_collisions(t_entity *entity, t_game_data *game_da
 				}
 				break;
 			case ENTITY_ENEMY_SHIP:
-				if ((int)entity->next_x == (int)entity2->next_x && (int)entity->next_y == (int)entity2->next_y)
+				if (ft_entities_collide(entity, entity2, 0.8))
 				{
 					p_ship->health -= 100;
 				}

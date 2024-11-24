@@ -68,6 +68,6 @@ re: fclean all
 
 .PHONY: debug
 debug:
-	@$(MAKE) $(NAME) CFLAGS="-g3 -DDEBUG"
+	@$(MAKE) $(NAME) CFLAGS="-Wall -Wextra -g3 -DDEBUG"
 
 -include $(DEPS)

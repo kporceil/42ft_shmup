@@ -5,7 +5,9 @@ SUBDIR := physics/ \
 		  scenes/ \
 		  scenes/game/ \
 		  scenes/game/entity/ \
-		  scenes/main_menu/
+		  scenes/main_menu/ \
+		  scenes/game_mode_menu/ \
+		  scenes/settings/ \
 
 BASENAME := physics/collision \
 			physics/movement \

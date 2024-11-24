@@ -50,7 +50,8 @@ void ft_game_update(t_game_data *game_data)
 			entity->ft_handle_collisions(entity, game_data);
 		entity = tmp;
 	}
-	entity = game_data->entities;
+	entity = game_data->entities
+		;
 	// Delete dead body
 	while (entity)
 	{
@@ -181,6 +182,7 @@ void ft_game_controls(t_game_data *game_data)
 			laser->velocity = 1;
 			((t_entity_player_laser *) laser->data)->damage = PLAYER_LASER_DAMAGE(game_data->scenario);
 			((t_entity_player_laser *) laser->data)->perforation = PLAYER_LASER_PERFORATION(game_data->scenario);
+			((t_entity_player_laser *) laser->data)->player_id = entity->id;
 			entity_add_back(game_data->entities, laser);
 			player_ship->cooldown = game_data->frame_time + 300 * NS_PER_MS;
 			break;
