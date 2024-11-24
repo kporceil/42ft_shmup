@@ -12,7 +12,7 @@ INCLUDES := includes
 
 DEPSFLAGS := -MD -MP -MF
 
-LIBFLAGS := -lncursesw
+LIBFLAGS := -lncursesw -lm
 
 MAKEFLAGS += --no-print-directory
 
@@ -66,8 +66,8 @@ fclean: clean
 .PHONY: re
 re: fclean all
 
-.PHONY: noflags
-noflags:
-	@$(MAKE) $(NAME) CFLAGS=""
+.PHONY: debug
+debug:
+	@$(MAKE) $(NAME) CFLAGS="-g3 -DDEBUG"
 
 -include $(DEPS)

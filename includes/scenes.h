@@ -15,10 +15,10 @@
 
 # include <stdbool.h>
 
+# include "game_scenario.h"
 # include "ui_button.h"
 
 // Game state (current scene)
-//TODO: Maybe rename to t_scene?
 typedef enum	e_game_state
 {
 	STATE_EXIT,
@@ -30,6 +30,9 @@ typedef enum	e_game_state
 // Global variables
 extern t_game_state	state;
 extern bool			loop;
+
+// Game
+int		ft_game(t_game_scenario scenario);
 
 // Main menu
 int		ft_main_menu();

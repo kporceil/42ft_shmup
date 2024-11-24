@@ -4,7 +4,8 @@ SUBDIR := physics/ \
 		  render/ui/button/ \
 		  scenes/ \
 		  scenes/game/ \
-		  scenes/main_menu/ \
+		  scenes/game/entity/ \
+		  scenes/main_menu/
 
 BASENAME := physics/collision \
 			physics/movement \
@@ -18,6 +19,13 @@ BASENAME := physics/collision \
 			scenes/game/game_render \
 			scenes/game/game_input \
 			scenes/game/game_update \
+			scenes/game/game_enemy \
+			scenes/game/entity/entity \
+			scenes/game/entity/entity_enemy_bomb \
+			scenes/game/entity/entity_enemy_laser \
+			scenes/game/entity/entity_enemy_ship \
+			scenes/game/entity/entity_player_laser \
+			scenes/game/entity/entity_player_ship \
 			scenes/main_menu/main_menu \
 			scenes/main_menu/main_menu_input \
 			scenes/main_menu/main_menu_render \

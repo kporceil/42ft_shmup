@@ -34,13 +34,29 @@ int	ft_main_menu()
 	getmaxyx(stdscr, max_y, max_x); // Define screen size
 
 	// Init buttons
-	t_ui_button *buttons[] = {
-		ft_new_btn(0, 0, "New game", ft_new_game_trigger, true),
-		ft_new_btn(0, 0, "Settings", ft_settings_trigger, true),
-		ft_new_btn(0, 0, "Exit", ft_exit_trigger, true),
-		NULL
-	};
-	//TODO: Malloc safe the buttons
+	t_ui_button **buttons = malloc(sizeof(t_ui_button *) * 4);
+	if (!buttons)
+		return (-1);
+	buttons[0] = ft_new_btn(0, 0, "New game", ft_new_game_trigger, true);
+	if (!buttons[0])
+	{
+		ft_free_btn_list(buttons);
+		return (-1);
+	}
+	buttons[1] = ft_new_btn(0, 0, "Settings", ft_settings_trigger, true);
+	if (!buttons[1])
+	{
+		ft_free_btn_list(buttons);
+		return (-1);
+	}
+	buttons[2] = ft_new_btn(0, 0, "Exit", ft_exit_trigger, true);
+	if (!buttons[2])
+	{
+		ft_free_btn_list(buttons);
+		return (-1);
+	}
+	buttons[3] = NULL;
+	// Highlight order
 	buttons[0]->next_highlight = buttons[1];
 	buttons[1]->next_highlight = buttons[2];
 	buttons[2]->prev_highlight = buttons[1];
@@ -69,9 +85,8 @@ int	ft_main_menu()
 		first_render = false;
 	}
 
-	// Free buttons
-	for (int i = 0; buttons[i]; i++)
-		free(buttons[i]);
+	// Free UI
+	ft_free_btn_list(buttons);
 	return (0);
 }
 
