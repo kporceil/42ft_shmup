@@ -41,6 +41,7 @@ t_game_data	*ft_game_init(t_game_scenario scenario)
 	// Screen values
 	game_data->resized = true;
 	// Other
+	game_data->frame_since_begin = 0;
 	game_data->paused = false;
 	return (game_data);
 }

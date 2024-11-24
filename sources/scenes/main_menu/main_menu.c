@@ -43,7 +43,7 @@ int	ft_main_menu()
 		ft_free_btn_list(buttons);
 		return (-1);
 	}
-	buttons[1] = ft_new_btn(0, 0, "Settings", ft_settings_trigger, true);
+	buttons[1] = ft_new_btn(0, 0, "Settings [disabled]", ft_settings_trigger, true);
 	if (!buttons[1])
 	{
 		ft_free_btn_list(buttons);
@@ -57,9 +57,9 @@ int	ft_main_menu()
 	}
 	buttons[3] = NULL;
 	// Highlight order
-	buttons[0]->next_highlight = buttons[1];
+	buttons[0]->next_highlight = buttons[2];
 	buttons[1]->next_highlight = buttons[2];
-	buttons[2]->prev_highlight = buttons[1];
+	buttons[2]->prev_highlight = buttons[0];
 	buttons[1]->prev_highlight = buttons[0];
 
 	// Define current_highlight as the New game button

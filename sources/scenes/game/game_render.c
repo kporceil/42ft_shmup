@@ -103,7 +103,6 @@ void	ft_game_init_background_layer(t_background_layer *layer)
 		layer->stars[i].x = rand() % SCENE_WIDTH;
 		layer->stars[i].y = rand() % SCENE_HEIGHT;
 	}
-	(void)game_data;
 }
 
 void	ft_game_render_background_layer(t_game_data *game_data, t_background_layer *layer)
@@ -175,7 +174,7 @@ void	ft_game_scene_size(t_game_data *game_data)
 	getmaxyx(stdscr, game_data->screen_height, game_data->screen_width);
 
 	// + 2 for the borders
-	if ((game_data->screen_height < SCENE_HEIGHT + SCENE_UI_HEIGHT + SCENE_VERTICAL_PADDING + 2) || (game_data->screen_width < SCENE_WIDTH + SCENE_HORIZONTAL_PADDING + 2))
+	if ((game_data->screen_height < SCENE_HEIGHT + SCENE_UI_HEIGHT + SCENE_VERTICAL_PADDING + 5) || (game_data->screen_width < SCENE_WIDTH + SCENE_HORIZONTAL_PADDING + 2))
 	{
 		game_data->available_screen_space = false;
 		return ;
@@ -221,4 +220,8 @@ void	ft_game_render_ui(t_game_data *game_data)
 
 	// Render score
 	mvprintw(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + SCENE_WIDTH - 15, "Score: %d", player->score);
+
+	// Render time with .1 precision
+	double	seconds = game_data->frame_since_begin / TARGET_FPS;
+	mvprintw(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + SCENE_WIDTH - 30, "Time: %.1fs", seconds);
 }

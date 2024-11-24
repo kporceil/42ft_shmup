@@ -74,7 +74,7 @@ int	ft_game_mode_menu()
 		ft_free_btn_list(buttons);
 		return (-1);
 	}
-	buttons[5] = ft_new_btn(0, 0, "Multiplayer", ft_multiplayer_trigger, true);
+	buttons[5] = ft_new_btn(0, 0, "Multiplayer [disabled]", ft_multiplayer_trigger, true);
 	if (!buttons[5])
 	{
 		ft_free_btn_list(buttons);
@@ -97,10 +97,10 @@ int	ft_game_mode_menu()
 	buttons[3]->prev_highlight = buttons[2];
 	buttons[3]->next_highlight = buttons[4];
 	buttons[4]->prev_highlight = buttons[3];
-	buttons[4]->next_highlight = buttons[5];
+	buttons[4]->next_highlight = buttons[6];
 	buttons[5]->prev_highlight = buttons[4];
 	buttons[5]->next_highlight = buttons[6];
-	buttons[6]->prev_highlight = buttons[5];
+	buttons[6]->prev_highlight = buttons[4];
 	buttons[6]->next_highlight = buttons[0];
 	buttons[0]->prev_highlight = buttons[6];
 
