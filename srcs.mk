@@ -19,6 +19,7 @@ BASENAME := physics/collision \
 			scenes/game/game_render \
 			scenes/game/game_input \
 			scenes/game/game_update \
+			scenes/game/game_enemy \
 			scenes/game/entity/entity \
 			scenes/game/entity/entity_enemy_bomb \
 			scenes/game/entity/entity_enemy_laser \

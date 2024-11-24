@@ -12,6 +12,8 @@
 
 #include <stdbool.h>
 
+#include "entity.h"
+
 /**
  * Check if two ranges overlap (max can't be less than min).
  *
@@ -51,4 +53,19 @@ bool	ft_segments_intersect(float a_y1, float a_x1, float a_y2, float a_x2, float
 	lambda = ((b_y2 - b_y1) * (b_x2 - a_x1) + (b_x1 - b_x2) * (b_y2 - a_y1)) / det;  // Point of intersection along segment A (ratio)
 	gamma = ((a_y1 - a_y2) * (b_x2 - a_x1) + (a_x2 - a_x1) * (b_y2 - a_y1)) / det;  // Point of intersection along segment B (ratio)
 	return (0.0f < lambda && lambda < 1.0f && 0.0f < gamma && gamma < 1.0f);  // Return true if the intersection point is within both segments (0<p<1)
+}
+
+/**
+ * Check if two entities collide with each other.
+ *
+ * @param entity1 The first entity.
+ * @param entity2 The second entity.
+ * @return true if the entities collide, false otherwise.
+ */
+bool	ft_entities_collide(t_entity *entity1, t_entity *entity2)
+{
+	//TODO: Not implemented for element with a size > 1
+	if (ft_segments_intersect(entity1->y, entity1->x, entity1->next_y, entity1->next_x, entity2->y, entity2->x, entity2->next_y, entity2->next_x))
+		return (true);
+	return (false);
 }

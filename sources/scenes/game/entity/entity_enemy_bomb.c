@@ -10,10 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "entities.h"
 #include <stdlib.h>
+#include <ncurses.h>
 
-void	*init_entity_enemy_bomb(void)
+#include "game.h"
+#include "game_scenario.h"
+#include "entity.h"
+#include "physics.h"
+
+void	*init_entity_enemy_bomb(t_game_data *game_data)
 {
 	t_entity_enemy_bomb	*entity;
 
@@ -25,4 +30,34 @@ void	*init_entity_enemy_bomb(void)
 	entity->health = 1;
 	entity->icon = 'B';
 	return ((void *)entity);
+}
+
+void	update_entity_enemy_bomb_physics(t_entity *entity, t_game_data *game_data)
+{
+	// Update velocity and position
+	entity->velocity = ft_accelerate(entity->velocity, entity->acceleration, game_data->delta_time);
+	entity->next_y = entity->y;
+	entity->next_x = entity->x;
+	ft_move(&entity->next_y, &entity->next_x, entity->velocity, entity->angle, game_data->delta_time);
+}
+
+void	render_entity_enemy_bomb(t_entity *entity, t_game_data *game_data)
+{
+	if (entity->next_y != entity->y || entity->next_x != entity->x || game_data->resized)
+	{
+		entity->y = entity->next_y;
+		entity->x = entity->next_x;
+		mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ((t_entity_enemy_bomb *) entity->data)->icon);
+	}
+}
+
+void	unrender_entity_enemy_bomb(t_entity *entity, t_game_data *game_data)
+{
+	if (entity->next_y != entity->y || entity->next_x != entity->x)
+		mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ' ');
+}
+
+void	del_entity_enemy_bomb(t_entity_enemy_bomb *entity)
+{
+	free(entity);
 }

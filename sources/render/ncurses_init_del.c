@@ -41,4 +41,5 @@ void	ft_del_ncurses()
 	clear();
 	refresh();
 	endwin();  // Ends console cursor mode
+	
 }

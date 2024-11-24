@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <string.h>
 
 #include "ui_button.h"
@@ -34,4 +35,13 @@ int	ft_height_btn(const t_ui_button *btn)
 int	ft_width_btn(const t_ui_button *btn)
 {
 	return (strlen(btn->content) + (btn->has_borders ? 2 : 0) + btn->x_padding * 2);
+}
+
+void	ft_free_btn_list(t_ui_button **btn_list)
+{
+	if (!btn_list)
+		return ;
+	for (int i = 0; btn_list[i]; i++)
+		ft_del_btn(btn_list[i]);
+	free(btn_list);
 }

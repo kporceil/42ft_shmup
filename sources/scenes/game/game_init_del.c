@@ -11,22 +11,33 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "game.h"
+#include "entity.h"
+#include "game_scenario.h"
 
 /**
  * Initializes the game data.
  *
  * @return The game data.
  */
-t_game_data	*ft_game_init(void)
+t_game_data	*ft_game_init(t_game_scenario scenario)
 {
 	t_game_data	*game_data;
 
 	game_data = malloc(sizeof(t_game_data));
 	if (!game_data)
 		return (NULL);
-	// TODO: Initialize game_data
+	game_data->scenario = scenario;
+	// Initialize entities with main player entity
+	game_data->entities = init_entity(ENTITY_PLAYER_SHIP, game_data);
+	game_data->entities->y = SCENE_HEIGHT - 10;
+	game_data->entities->x = SCENE_WIDTH / 2;
+	// Screen values
+	game_data->resized = true;
+	// Other
+	game_data->paused = false;
 	return (game_data);
 }
 
@@ -37,6 +48,6 @@ t_game_data	*ft_game_init(void)
  */
 void	ft_game_del(t_game_data *game_data)
 {
-	// TODO: Free game_data
+	entity_clear(game_data->entities);
 	free(game_data);
 }

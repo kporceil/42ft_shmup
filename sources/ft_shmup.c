@@ -14,6 +14,7 @@
 #include <stdbool.h>
 
 #include "scenes.h"
+#include "game_scenario.h"
 #include "render.h"
 
 // Global variables
@@ -27,7 +28,8 @@ bool			loop = true;  // Main loop flag of any scene
  */
 int	ft_shmup(void)
 {
-	int				err_code = 0;
+	t_game_scenario		loaded_scenario = GAME_SCENARIO_EASY; 
+	int					err_code = 0;
 
 	// Init components
 	ft_init_ncurses();
@@ -44,7 +46,7 @@ int	ft_shmup(void)
 				//err_code = ft_settings();
 				break;
 			case STATE_GAME:
-				err_code = ft_game();
+				err_code = ft_game(loaded_scenario);
 				break;
 			case STATE_EXIT:
 				break;

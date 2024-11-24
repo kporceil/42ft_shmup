@@ -47,6 +47,7 @@ void		ft_move_btn(t_ui_button *btn, int y, int x);
 // UTILS
 int			ft_height_btn(const t_ui_button *btn);
 int			ft_width_btn(const t_ui_button *btn);
+void		ft_free_btn_list(t_ui_button **btn_list);
 
 // VISUAL EXTRA
 void		ft_render_btn_extras(const t_ui_button *btn);
