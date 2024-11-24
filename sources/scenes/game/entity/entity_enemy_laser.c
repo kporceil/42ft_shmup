@@ -28,7 +28,7 @@ void	*init_entity_enemy_laser(t_game_data *game_data)
 	entity->perforation = 1;
 	entity->damage = 50;
 	entity->color = COLOR_SET_RED;
-	entity->icon = '|';
+	entity->icon = '*';
 	return ((void *)entity);
 }
 
@@ -43,20 +43,15 @@ void	update_entity_enemy_laser_physics(t_entity *entity, t_game_data *game_data)
 
 void	handle_entity_enemy_laser_collisions(t_entity *entity, t_game_data *game_data)
 {
-	t_entity	*entity2;
+	t_entity	*entity2 = game_data->entities;
 
-	entity2 = game_data->entities;
-	while (entity && entity2)
+	while (entity2)
 	{
 		switch (entity2->type)
 		{
-			case ENTITY_PLAYER_SHIP:
-				if (ft_entities_collide(entity, entity2, 0.8))
-				{
-					((t_entity_player_ship *)entity2->data)->health -= ((t_entity_enemy_laser *)entity->data)->damage;
-					entity_delone(entity);
-					entity = NULL;
-				}
+			case ENTITY_PLAYER_LASER:
+				if (ft_entities_collide(entity, entity2, 0.5))
+					((t_entity_enemy_laser *)entity->data)->perforation = 0;
 				break;
 			default:
 				break;

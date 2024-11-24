@@ -60,7 +60,7 @@ t_entity	*init_entity(t_entity_type type, t_game_data *game_data)
 			break;
 		case ENTITY_PLAYER_LASER:
 			entity->ft_update_physics = &update_entity_player_laser_physics;
-			entity->ft_handle_collisions = NULL;//&handle_entity_player_laser_collisions;
+			entity->ft_handle_collisions = &handle_entity_player_laser_collisions;
 			entity->ft_render = &render_entity_player_laser;
 			entity->ft_unrender = &unrender_entity_player_laser;
 			break;
@@ -72,7 +72,7 @@ t_entity	*init_entity(t_entity_type type, t_game_data *game_data)
 			break;
 		case ENTITY_ENEMY_LASER:
 			entity->ft_update_physics = &update_entity_enemy_laser_physics;
-			entity->ft_handle_collisions = NULL;//&handle_entity_enemy_laser_collisions;
+			entity->ft_handle_collisions = &handle_entity_enemy_laser_collisions;
 			entity->ft_render = &render_entity_enemy_laser;
 			entity->ft_unrender = &unrender_entity_enemy_laser;
 			break;
