@@ -25,6 +25,7 @@ void	*init_entity_enemy_laser(t_game_data *game_data)
 	entity = malloc(sizeof(t_entity_enemy_laser));
 	if (!entity)
 		return (NULL);
+	entity->perforation = 1;
 	entity->damage = 50;
 	entity->color = COLOR_SET_RED;
 	entity->icon = '|';

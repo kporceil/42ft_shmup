@@ -8,10 +8,10 @@ ft_shmup
 # Environment
 debug_*
 *.swp
+log.txt
 
 # Makefile temp files
 .subdirstate
 
 # Self
 .gitignore
-

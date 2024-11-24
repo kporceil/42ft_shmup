@@ -6,7 +6,7 @@
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 01:20:07 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/24 05:34:59 by jureix-c         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:17:20 by kporceil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include "game_scenario.h"
 #include "entity.h"
 #include "physics.h"
+#include <stdio.h>
 
 /**
  * Loop update logic of the game
@@ -45,13 +46,68 @@ void ft_game_update(t_game_data *game_data)
 	while (entity)
 	{
 		tmp = entity->next;
-		entity->ft_handle_collisions(entity, game_data);
+		if (entity->ft_handle_collisions)
+			entity->ft_handle_collisions(entity, game_data);
+		entity = tmp;
+	}
+	entity = game_data->entities;
+	// Delete dead body
+	while (entity)
+	{
+		t_entity	*tmp = entity->next;
+		switch (entity->type)
+		{
+			case ENTITY_ENEMY_SHIP:
+			{
+				t_entity_enemy_ship	*e_ship = (t_entity_enemy_ship *)entity->data;
+				if (e_ship->health <= 0)
+				{
+					entity->ft_unrender(entity, game_data);
+					entity_delone(entity);
+				}
+				break;
+			}
+			case ENTITY_PLAYER_SHIP:
+			{
+				t_entity_player_ship *p_ship = (t_entity_player_ship *)entity->data;
+				if (p_ship->health <= 0)
+				{
+					entity->ft_unrender(entity, game_data);
+					entity_delone(entity);
+					game_over(game_data);
+				}
+				break;
+			}
+			case ENTITY_PLAYER_LASER:
+			{
+				t_entity_player_laser *p_laser = (t_entity_player_laser *)entity->data;
+				if (p_laser->perforation <= 0)
+				{
+					entity->ft_unrender(entity, game_data);
+					entity_delone(entity);
+				}
+				break;
+			}
+			case ENTITY_ENEMY_LASER:
+			{
+				t_entity_enemy_laser *e_laser = (t_entity_enemy_laser *)entity->data;
+				if (e_laser->perforation <= 0)
+				{
+					entity->ft_unrender(entity, game_data);
+					entity_delone(entity);
+				}
+				break;
+			}
+			default:
+				break;
+		}
 		entity = tmp;
 	}
 	// Delete lasers and ennemies out of bounds
 	entity = game_data->entities;
 	while (entity)
 	{
+		t_entity	*tmp = entity->next;
 		switch (entity->type)
 		{
 			case ENTITY_PLAYER_LASER:
@@ -71,7 +127,7 @@ void ft_game_update(t_game_data *game_data)
 				}
 				break;
 		}
-		entity = entity->next;
+		entity = tmp;
 	}
 }
 

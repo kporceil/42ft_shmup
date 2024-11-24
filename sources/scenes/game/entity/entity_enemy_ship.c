@@ -43,6 +43,7 @@ void	update_entity_enemy_ship_physics(t_entity *entity, t_game_data *game_data)
 void	handle_entity_enemy_ship_collisions(t_entity *entity, t_game_data *game_data)
 {
 	t_entity	*entity2;
+	t_entity_enemy_ship		*e_ship = (t_entity_enemy_ship *)entity->data;
 
 	entity2 = game_data->entities;
 	while (entity2)
@@ -50,6 +51,18 @@ void	handle_entity_enemy_ship_collisions(t_entity *entity, t_game_data *game_dat
 		switch (entity2->type)
 		{
 			case ENTITY_PLAYER_LASER:
+				if ((int)entity2->next_y == (int)entity->next_y && (int)entity2->next_x == (int)entity->next_x)
+				{
+					t_entity_player_laser	*p_laser = (t_entity_player_laser *)entity2->data;
+					e_ship->health -= p_laser->damage;
+					p_laser->perforation--;
+				}
+			case ENTITY_PLAYER_SHIP:
+				if ((int)entity->next_x == (int)entity2->next_x && (int)entity->next_y == (int)entity2->next_y)
+				{
+					e_ship->health -= 100;
+				}
+				break;
 				break;
 			default:
 				break;

@@ -46,6 +46,7 @@ void game_enemy_logic(t_game_data *game_data)
 					laser->x = enemy->x;
 					laser->angle = M_PI_2;
 					laser->velocity = 0.5;
+					((t_entity_enemy_laser *) laser->data)->perforation = 1;
 					((t_entity_enemy_laser *) laser->data)->damage = ENEMY_LASER_DAMAGE(game_data->scenario);
 					entity_add_back(game_data->entities, laser);
 					enemy_ship->cooldown = game_data->frame_time + 1 * NS_PER_SECOND;

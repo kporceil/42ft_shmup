@@ -6,7 +6,7 @@
 /*   By: jureix-c <jureix-c@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 06:19:21 by jureix-c          #+#    #+#             */
-/*   Updated: 2024/11/24 04:41:36 by jureix-c         ###   ########.fr       */
+/*   Updated: 2024/11/24 18:14:43 by kporceil         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	ft_game_input(t_game_data *game_data);
 void	ft_game_update(t_game_data *game_data);
 void	ft_game_controls(t_game_data *game_data);
 void	ft_game_render(t_game_data *game_data);
+void	game_over(t_game_data *game_data);
 
 // GAME ENNEMY
 void	game_enemy_logic(t_game_data *game_data);

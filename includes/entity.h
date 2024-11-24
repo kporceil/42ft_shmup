@@ -98,6 +98,7 @@ typedef struct	s_entity_enemy_ship
 
 typedef struct	s_entity_enemy_laser
 {
+	int				perforation;
 	int				damage;
 	int				color;
 	unsigned char	icon;

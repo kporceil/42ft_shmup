@@ -53,14 +53,27 @@ void	update_entity_player_ship_physics(t_entity *entity, t_game_data *game_data)
 
 void	handle_entity_player_ship_collisions(t_entity *entity, t_game_data *game_data)
 {
-	t_entity	*entity2;
+	t_entity				*entity2;
+	t_entity_player_ship	*p_ship = (t_entity_player_ship *) entity->data;
 
 	entity2 = game_data->entities;
-	while (entity && entity2)
+	while (entity2)
 	{
 		switch (entity2->type)
 		{
+			case ENTITY_ENEMY_LASER:
+				if ((int)entity->next_x == (int)entity2->next_x && (int)entity->next_y == (int)entity2->next_y)
+				{
+					t_entity_enemy_laser *e_laser = (t_entity_enemy_laser *) entity2->data;
+					p_ship->health -= e_laser->damage;
+					e_laser->perforation--;
+				}
+				break;
 			case ENTITY_ENEMY_SHIP:
+				if ((int)entity->next_x == (int)entity2->next_x && (int)entity->next_y == (int)entity2->next_y)
+				{
+					p_ship->health -= 100;
+				}
 				break;
 			default:
 				break;
@@ -77,6 +90,8 @@ void	render_entity_player_ship(t_entity *entity, t_game_data *game_data)
 		entity->x = entity->next_x;
 		mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ((t_entity_player_ship *) entity->data)->icon);
 	}
+	mvprintw(getmaxy(stdscr) - 2, 1, "                      ");
+	mvprintw(getmaxy(stdscr) - 2, 1, "Health : %d", ((t_entity_player_ship *)entity->data)->health);
 }
 
 void	unrender_entity_player_ship(t_entity *entity, t_game_data *game_data)
