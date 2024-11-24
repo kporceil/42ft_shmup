@@ -28,7 +28,7 @@ bool			loop = true;  // Main loop flag of any scene
  */
 int	ft_shmup(void)
 {
-	t_game_scenario		loaded_scenario = GAME_SCENARIO_EASY; 
+	t_game_scenario		loaded_scenario = GAME_SCENARIO_DOOMSDAY; 
 	int					err_code = 0;
 
 	// Init components

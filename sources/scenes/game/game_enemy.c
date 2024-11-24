@@ -37,7 +37,7 @@ void game_enemy_logic(t_game_data *game_data)
 		if (enemy->type == ENTITY_ENEMY_SHIP)
 		{
 			enemy_ship = (t_entity_enemy_ship *) enemy->data;
-			if (rand() % 100 < 2 && enemy_ship->cooldown <= game_data->frame_time)
+			if (rand() % 100 < 2 && enemy_ship->cooldown <= game_data->frame_time && enemy->y + 1 < SCENE_HEIGHT)
 			{
 				t_entity *laser = init_entity(ENTITY_ENEMY_LASER, game_data);
 				if (laser)

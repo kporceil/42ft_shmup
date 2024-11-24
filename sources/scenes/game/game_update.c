@@ -109,14 +109,14 @@ void ft_game_update(t_game_data *game_data)
 		{
 			case ENTITY_PLAYER_LASER:
 			case ENTITY_ENEMY_LASER:
-				if (entity->next_y < 0 || entity->next_y > SCENE_HEIGHT + 1 || entity->next_x < 0 || entity->next_x > SCENE_WIDTH)
+				if (entity->y > SCENE_HEIGHT + 1 || entity->next_y < 0 || entity->next_y > SCENE_HEIGHT + 1 || entity->next_x < 0 || entity->next_x > SCENE_WIDTH)
 				{
 					entity->ft_unrender(entity, game_data);
 					entity_delone(entity);
 				}
 				break;
 			case ENTITY_ENEMY_SHIP:
-				if (entity->next_y > SCENE_HEIGHT + 1 || entity->next_x < 0 || entity->next_x > SCENE_WIDTH)
+				if (entity->y > SCENE_HEIGHT + 1 || entity->next_y > SCENE_HEIGHT + 1 || entity->next_x < 0 || entity->next_x > SCENE_WIDTH)
 				{
 					// TODO: Handle player score
 					entity->ft_unrender(entity, game_data);

@@ -29,7 +29,7 @@ void	*init_entity_enemy_laser(t_game_data *game_data)
 	entity->perforation = 1;
 	entity->damage = 50;
 	entity->color = COLOR_SET_RED;
-	entity->icon = '*';
+	entity->icon = '!';
 	entity->color = RED;
 	return ((void *)entity);
 }
@@ -66,6 +66,8 @@ void	render_entity_enemy_laser(t_entity *entity, t_game_data *game_data)
 {
 	entity->y = entity->next_y;
 	entity->x = entity->next_x;
+	if (entity->y > SCENE_HEIGHT)
+		return ;
 	attron(COLOR_PAIR(((t_entity_enemy_laser *) entity->data)->color));
 	mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ((t_entity_enemy_laser *) entity->data)->icon);
 	attroff(COLOR_PAIR(((t_entity_enemy_laser *) entity->data)->color));
@@ -73,6 +75,8 @@ void	render_entity_enemy_laser(t_entity *entity, t_game_data *game_data)
 
 void	unrender_entity_enemy_laser(t_entity *entity, t_game_data *game_data)
 {
+	if (entity->y > SCENE_HEIGHT)
+		return ;
 	mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ' ');
 }
 

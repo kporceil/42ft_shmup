@@ -12,6 +12,7 @@
 
 #include <stdbool.h>
 #include <ncurses.h>
+#include <locale.h>
 
 #include "render.h"
 

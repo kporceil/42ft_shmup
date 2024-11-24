@@ -30,7 +30,7 @@ void	*init_entity_player_laser(t_game_data *game_data)
 	entity->damage = 100;
 	entity->color = COLOR_SET_BLUE;
 	entity->icon = '8';
-	entity->color = BLUE;
+	entity->color = GREEN;
 	return ((void *)entity);
 }
 
@@ -67,6 +67,8 @@ void	render_entity_player_laser(t_entity *entity, t_game_data *game_data)
 {
 	entity->y = entity->next_y;
 	entity->x = entity->next_x;
+	if (entity->y <= 0)
+		return;
 	attron(COLOR_PAIR(((t_entity_player_laser *) entity->data)->color));
 	mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ((t_entity_player_laser *) entity->data)->icon);
 	attroff(COLOR_PAIR(((t_entity_player_laser *) entity->data)->color));
@@ -74,6 +76,8 @@ void	render_entity_player_laser(t_entity *entity, t_game_data *game_data)
 
 void	unrender_entity_player_laser(t_entity *entity, t_game_data *game_data)
 {
+	if (entity->y <= 0)
+		return;
 	mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ' ');
 }
 
