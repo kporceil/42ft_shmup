@@ -27,6 +27,12 @@ void	game_over(t_game_data *game_data)
 	//entity_clear(game_data->entities);
 	//free(game_data);
 	clear();
+	t_entity *player = entity_find_by_id(game_data->entities, 0);
+	if (player)
+	{
+		int	score = ((t_entity_player_ship *)player->data)->score;
+		mvprintw((getmaxy(stdscr) / 2) + 1, (getmaxx(stdscr) - 12) / 2, "Score : %d", score);
+	}
 	mvprintw(getmaxy(stdscr) / 2, (getmaxx(stdscr) - strlen("Game over !")) / 2, "Game over !");
 	refresh();
 	while (getch() != 10)
