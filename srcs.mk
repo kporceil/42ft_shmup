@@ -12,6 +12,7 @@ SUBDIR := physics/ \
 BASENAME := physics/collision \
 			physics/movement \
 			render/ncurses_init_del \
+			render/ui/render_ui \
 			render/ui/button/ui_button_actions \
 			render/ui/button/ui_button_extras \
 			render/ui/button/ui_button_memory \
@@ -31,7 +32,8 @@ BASENAME := physics/collision \
 			scenes/game/entity/entity_player_ship \
 			scenes/main_menu/main_menu \
 			scenes/main_menu/main_menu_input \
-			scenes/main_menu/main_menu_render \
+			scenes/game_mode_menu/game_mode_menu \
+			scenes/game_mode_menu/game_mode_menu_input \
 			ft_shmup \
 			main
 

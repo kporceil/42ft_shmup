@@ -23,13 +23,15 @@ typedef enum	e_game_state
 {
 	STATE_EXIT,
 	STATE_MAIN_MENU,
+	STATE_GAME_MODE_MENU,
 	STATE_SETTINGS,
 	STATE_GAME
 }				t_game_state;
 
 // Global variables
-extern t_game_state	state;
-extern bool			loop;
+extern t_game_scenario	scenario;
+extern t_game_state		state;
+extern bool				loop;
 
 // Game
 int		ft_game(t_game_scenario scenario);
@@ -37,6 +39,9 @@ int		ft_game(t_game_scenario scenario);
 // Main menu
 int		ft_main_menu();
 void	ft_main_menu_input(bool *should_render, t_ui_button **current_highlight, int *y, int *x);
-void	ft_main_menu_render(const t_ui_button **btns, const t_ui_button *current_highlight);
+
+// Game mode menu
+int		ft_game_mode_menu();
+void	ft_game_mode_menu_input(bool *should_render, t_ui_button **current_highlight, int *y, int *x);
 
 #endif

@@ -6,6 +6,7 @@
 ft_shmup
 
 # Environment
+todo_finder.sh
 debug_*
 *.swp
 log.txt

@@ -80,21 +80,11 @@ typedef struct	s_game_data
 void	ft_game_input(t_game_data *game_data);
 void	ft_game_update(t_game_data *game_data);
 void	ft_game_controls(t_game_data *game_data);
-void	ft_game_render(t_game_data *game_data);
 void	game_over(t_game_data *game_data);
 
 // GAME ENNEMY
 void	game_enemy_logic(t_game_data *game_data);
 void	game_add_enemy(t_game_data *game_data);
-
-// RENDER UTILS
-void	ft_game_render_scene_borders(t_game_data *game_data);
-void	ft_game_render_scene_background(t_game_data *game_data);
-void	ft_game_init_background_layer(t_game_data *game_data, t_background_layer *layer);
-void	ft_game_render_background_layer(t_game_data *game_data, t_background_layer *layer);
-void	ft_game_unrender_background_layer(t_game_data *game_data, t_background_layer *layer);
-void	ft_game_del_background_layer(t_background_layer *layer);
-void	ft_game_scene_size(t_game_data *game_data);
 
 // GAME DATA
 t_game_data	*ft_game_init(t_game_scenario scenario);

@@ -19,6 +19,7 @@
 
 // Global variables
 t_game_state	state = STATE_MAIN_MENU;  // Current game state
+t_game_scenario	scenario = GAME_SCENARIO_EASY;  // Current game scenario
 bool			loop = true;  // Main loop flag of any scene
 
 /**
@@ -28,7 +29,6 @@ bool			loop = true;  // Main loop flag of any scene
  */
 int	ft_shmup(void)
 {
-	t_game_scenario		loaded_scenario = GAME_SCENARIO_EASY; 
 	int					err_code = 0;
 
 	// Init components
@@ -42,11 +42,14 @@ int	ft_shmup(void)
 			case STATE_MAIN_MENU:
 				err_code = ft_main_menu();
 				break;
+			case STATE_GAME_MODE_MENU:
+				err_code = ft_game_mode_menu();
+				break;
 			case STATE_SETTINGS:
 				//err_code = ft_settings();
 				break;
 			case STATE_GAME:
-				err_code = ft_game(loaded_scenario);
+				err_code = ft_game(scenario);
 				break;
 			case STATE_EXIT:
 				break;

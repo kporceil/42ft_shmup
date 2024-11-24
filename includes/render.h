@@ -13,6 +13,10 @@
 #ifndef RENDER_H
 # define RENDER_H
 
+// CIRCULAR INCLUDE FIX
+typedef struct s_game_data t_game_data;
+typedef struct s_background_layer t_background_layer;
+
 // COLORS
 # define WHITE 1
 # define BLUE 2
@@ -25,6 +29,14 @@
 # define BLACK_ON_WHITE 9
 
 // GAME RENDER
+void	ft_game_render(t_game_data *game_data);
+void	ft_game_render_scene_borders(t_game_data *game_data);
+void	ft_game_render_scene_background(t_game_data *game_data);
+void	ft_game_init_background_layer(t_game_data *game_data, t_background_layer *layer);
+void	ft_game_render_background_layer(t_game_data *game_data, t_background_layer *layer);
+void	ft_game_unrender_background_layer(t_game_data *game_data, t_background_layer *layer);
+void	ft_game_del_background_layer(t_background_layer *layer);
+void	ft_game_scene_size(t_game_data *game_data);
 
 // NCURSES
 void	ft_init_ncurses();

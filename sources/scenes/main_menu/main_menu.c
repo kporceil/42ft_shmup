@@ -80,7 +80,7 @@ int	ft_main_menu()
 			ft_move_btn(buttons[0], (max_y - ft_height_btn(buttons[0]) - 8) / 2, (max_x - ft_width_btn(buttons[0])) / 2);
 			ft_move_btn(buttons[1], (max_y - ft_height_btn(buttons[1])) / 2, (max_x - ft_width_btn(buttons[1])) / 2);
 			ft_move_btn(buttons[2], (max_y - ft_height_btn(buttons[2]) + 8) / 2, (max_x - ft_width_btn(buttons[2])) / 2);
-			ft_main_menu_render((const t_ui_button **) buttons, current_highlight);
+			ui_render((const t_ui_button **) buttons, current_highlight);
 		}
 		first_render = false;
 	}
@@ -93,7 +93,7 @@ int	ft_main_menu()
 void	ft_new_game_trigger()
 {
 	loop = false;
-	state = STATE_GAME;
+	state = STATE_GAME_MODE_MENU;
 }
 
 void	ft_settings_trigger()
