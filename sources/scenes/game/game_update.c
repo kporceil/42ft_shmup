@@ -124,6 +124,8 @@ void ft_game_update(t_game_data *game_data)
 				if (entity->y > SCENE_HEIGHT + 1 || entity->next_y > SCENE_HEIGHT + 1 || entity->next_x < 0 || entity->next_x > SCENE_WIDTH)
 				{
 					// TODO: Handle player score
+					t_entity	*p_ship = entity_find_by_id(game_data->entities, 0);
+					((t_entity_player_ship *)p_ship->data)->score--;
 					entity->ft_unrender(entity, game_data);
 					entity_delone(entity);
 				}
