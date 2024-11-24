@@ -62,6 +62,13 @@ typedef enum	e_game_scenario
 								scenario == GAME_SCENARIO_DOOMSDAY ? 1000 : \
 								scenario == GAME_SCENARIO_MULTIPLAYER ? 200 : 0)
 
+# define SCORE_REWARD(scenario) (scenario == GAME_SCENARIO_EASY ? 10 : \
+								scenario == GAME_SCENARIO_MEDIUM ? 20 : \
+								scenario == GAME_SCENARIO_HARD ? 30 : \
+								scenario == GAME_SCENARIO_WW3 ? 50 : \
+								scenario == GAME_SCENARIO_DOOMSDAY ? 100 : \
+								scenario == GAME_SCENARIO_MULTIPLAYER ? 20 : 0)
+
 // MACROS FOR HP
 # define PLAYER_HP(scenario) (scenario == GAME_SCENARIO_EASY ? 1000 : \
 								scenario == GAME_SCENARIO_MEDIUM ? 800 : \

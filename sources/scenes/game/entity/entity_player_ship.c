@@ -90,6 +90,8 @@ void	render_entity_player_ship(t_entity *entity, t_game_data *game_data)
 		entity->x = entity->next_x;
 		mvaddch(game_data->scene_y_origin + entity->y, game_data->scene_x_origin + entity->x, ((t_entity_player_ship *) entity->data)->icon);
 	}
+	mvprintw(getmaxy(stdscr) - 3, 1, "                      ");
+	mvprintw(getmaxy(stdscr) - 3, 1, "Score : %d", ((t_entity_player_ship *)entity->data)->score);
 	mvprintw(getmaxy(stdscr) - 2, 1, "                      ");
 	mvprintw(getmaxy(stdscr) - 2, 1, "Health : %d", ((t_entity_player_ship *)entity->data)->health);
 }

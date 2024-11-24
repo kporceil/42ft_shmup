@@ -56,6 +56,11 @@ void	handle_entity_enemy_ship_collisions(t_entity *entity, t_game_data *game_dat
 					t_entity_player_laser	*p_laser = (t_entity_player_laser *)entity2->data;
 					e_ship->health -= p_laser->damage;
 					p_laser->perforation--;
+					t_entity *p_ship = entity_find_by_id(game_data->entities, p_laser->player_id);
+					if (p_ship && e_ship->health > 0)
+						((t_entity_player_ship *)p_ship->data)->score += SCORE_REWARD(game_data->scenario);
+					else if (p_ship)
+						((t_entity_player_ship *)p_ship->data)->score += (SCORE_REWARD(game_data->scenario) * 2);
 				}
 			case ENTITY_PLAYER_SHIP:
 				if (ft_entities_collide(entity, entity2, 0.8))
