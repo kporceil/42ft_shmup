@@ -80,7 +80,6 @@ typedef struct	s_game_data
 void	ft_game_input(t_game_data *game_data);
 void	ft_game_update(t_game_data *game_data);
 void	ft_game_controls(t_game_data *game_data);
-void	game_over(t_game_data *game_data);
 
 // GAME ENNEMY
 void	game_enemy_logic(t_game_data *game_data);

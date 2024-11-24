@@ -26,7 +26,7 @@ void game_enemy_logic(t_game_data *game_data)
 {
 	// Add enemies if needed
 	int enemy_count = entity_count_by_type(game_data->entities, ENTITY_ENEMY_SHIP);
-	if (enemy_count < MAX_ENEMY(game_data->scenario))
+	if (enemy_count < MAX_ENEMY(game_data->scenario) && rand() % 100 < 10)  // 10% chance to add an enemy
 		game_add_enemy(game_data);
 
 	// Make enemies shoot

@@ -14,6 +14,7 @@
 #include <stdbool.h>
 
 #include "game.h"
+#include "render.h"
 #include "entity.h"
 #include "game_scenario.h"
 
@@ -52,5 +53,6 @@ t_game_data	*ft_game_init(t_game_scenario scenario)
 void	ft_game_del(t_game_data *game_data)
 {
 	entity_clear(game_data->entities);
+	ft_game_del_background(game_data);
 	free(game_data);
 }

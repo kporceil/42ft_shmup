@@ -20,6 +20,7 @@
 // Global variables
 t_game_state	state = STATE_MAIN_MENU;  // Current game state
 t_game_scenario	scenario = GAME_SCENARIO_EASY;  // Current game scenario
+int				last_game_score = 0;  // Last game score
 bool			loop = true;  // Main loop flag of any scene
 
 /**
@@ -35,7 +36,7 @@ int	ft_shmup(void)
 	ft_init_ncurses();
 
 	// Manage current game state
-	while (state != STATE_EXIT)
+	while (state != STATE_EXIT && err_code == 0)
 	{
 		switch (state)
 		{
@@ -50,6 +51,9 @@ int	ft_shmup(void)
 				break;
 			case STATE_GAME:
 				err_code = ft_game(scenario);
+				break;
+			case STATE_GAME_OVER:
+				err_code = ft_game_over();
 				break;
 			case STATE_EXIT:
 				break;

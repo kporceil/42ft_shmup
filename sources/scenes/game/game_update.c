@@ -15,6 +15,7 @@
 
 #include "game.h"
 #include "game_scenario.h"
+#include "scenes.h"
 #include "entity.h"
 #include "physics.h"
 #include <stdio.h>
@@ -72,7 +73,11 @@ void ft_game_update(t_game_data *game_data)
 			{
 				t_entity_player_ship *p_ship = (t_entity_player_ship *)entity->data;
 				if (p_ship->health <= 0)
-					game_over(game_data);
+				{
+					last_game_score = p_ship->score;
+					state = STATE_GAME_OVER;
+					loop = false;
+				}
 				break;
 			}
 			case ENTITY_PLAYER_LASER:

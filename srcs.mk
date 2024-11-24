@@ -4,6 +4,7 @@ SUBDIR := physics/ \
 		  render/ui/button/ \
 		  scenes/ \
 		  scenes/game/ \
+		  scenes/game_over/ \
 		  scenes/game/entity/ \
 		  scenes/main_menu/ \
 		  scenes/game_mode_menu/ \
@@ -23,7 +24,6 @@ BASENAME := physics/collision \
 			scenes/game/game_input \
 			scenes/game/game_update \
 			scenes/game/game_enemy \
-			scenes/game/game_over \
 			scenes/game/entity/entity \
 			scenes/game/entity/entity_enemy_bomb \
 			scenes/game/entity/entity_enemy_laser \
@@ -34,6 +34,7 @@ BASENAME := physics/collision \
 			scenes/main_menu/main_menu_input \
 			scenes/game_mode_menu/game_mode_menu \
 			scenes/game_mode_menu/game_mode_menu_input \
+			scenes/game_over/game_over \
 			ft_shmup \
 			main
 

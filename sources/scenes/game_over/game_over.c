@@ -22,21 +22,14 @@
 #include "scenes.h"
 #include "render.h"
 
-void	game_over(t_game_data *game_data)
+int	ft_game_over()
 {
-	//entity_clear(game_data->entities);
-	//free(game_data);
 	clear();
-	t_entity *player = entity_find_by_id(game_data->entities, 0);
-	if (player)
-	{
-		int	score = ((t_entity_player_ship *)player->data)->score;
-		mvprintw((getmaxy(stdscr) / 2) + 1, (getmaxx(stdscr) - 12) / 2, "Score : %d", score);
-	}
 	mvprintw(getmaxy(stdscr) / 2, (getmaxx(stdscr) - strlen("Game over !")) / 2, "Game over !");
+	mvprintw((getmaxy(stdscr) / 2) + 1, (getmaxx(stdscr) - 12) / 2, "Score : %d", last_game_score);
+	mvprintw(getmaxy(stdscr) / 2 + 5, (getmaxx(stdscr) - strlen("Press <space> to return to menu")) / 2, "Press <space> to return to menu");
 	refresh();
-	while (getch() != 10)
+	while (getch() != 32)
 		;
-	ft_del_ncurses();
-	exit(0);
+	state = STATE_MAIN_MENU;
 }

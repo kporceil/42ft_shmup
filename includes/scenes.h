@@ -25,16 +25,19 @@ typedef enum	e_game_state
 	STATE_MAIN_MENU,
 	STATE_GAME_MODE_MENU,
 	STATE_SETTINGS,
-	STATE_GAME
+	STATE_GAME,
+	STATE_GAME_OVER
 }				t_game_state;
 
 // Global variables
 extern t_game_scenario	scenario;
+extern int				last_game_score;
 extern t_game_state		state;
 extern bool				loop;
 
 // Game
 int		ft_game(t_game_scenario scenario);
+int		ft_game_over();
 
 // Main menu
 int		ft_main_menu();

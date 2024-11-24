@@ -120,10 +120,15 @@ void	ft_game_unrender_background_layer(t_game_data *game_data, t_background_laye
 	}
 }
 
-void	ft_game_del_background_layer(t_background_layer *layer)
+void	ft_game_del_background(t_game_data *game_data)
 {
-	free(layer->stars);
-	layer->star_count = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		if (game_data->background_layers[i].star_count == 0)
+			continue;
+		free(game_data->background_layers[i].stars);
+		game_data->background_layers[i].star_count = 0;
+	}
 }
 
 /**
