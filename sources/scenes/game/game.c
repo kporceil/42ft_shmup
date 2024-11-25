@@ -38,6 +38,7 @@ int	ft_game(t_game_scenario scenario)
 	clear();
 	ft_game_scene_size(game_data);
 
+	last_game_score = 0;  // Reset last game score
 	entity_reset_id_counter();  // Reset entity ID counter
 	loop = true;  // Main loop flag
 	while (loop)

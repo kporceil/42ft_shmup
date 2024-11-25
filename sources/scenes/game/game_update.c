@@ -143,7 +143,7 @@ void ft_game_controls(t_game_data *game_data)
 	t_entity *laser;
 
 	// Get player entity
-	entity = entity_find_by_id(game_data->entities, 0);
+	entity = entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP);
 	if (!entity)
 		return ;
 	// Prevent velocity from going below 0

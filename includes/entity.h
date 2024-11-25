@@ -136,6 +136,7 @@ void		entity_add_back(t_entity *node, t_entity *new);
 void		entity_add_front(t_entity *node, t_entity *new);
 int			entity_clear(t_entity *node);
 t_entity	*entity_find_by_id(t_entity *node, int id);
+t_entity	*entity_find_by_type(t_entity *node, t_entity_type type);
 int			entity_count_by_type(t_entity *node, t_entity_type type);
 
 // ENTITY RENDER

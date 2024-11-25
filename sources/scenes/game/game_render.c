@@ -193,7 +193,7 @@ void	ft_game_scene_size(t_game_data *game_data)
 void	ft_game_render_ui(t_game_data *game_data)
 {
 	// Render HP bar
-	t_entity				*entity = entity_find_by_id(game_data->entities, 0);
+	t_entity				*entity = entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP);
 	if (!entity)
 		return ;
 	t_entity_player_ship	*player = (t_entity_player_ship *)entity->data;
