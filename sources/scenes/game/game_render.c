@@ -49,6 +49,9 @@ void	ft_game_render(t_game_data *game_data)
 		entity->ft_render(entity, game_data);
 		entity = entity->next;
 	}
+
+	ft_game_render_ui(game_data);  // Render UI
+
 	refresh();  // Dump screen to terminal
 }
 
@@ -68,7 +71,7 @@ void	ft_game_render_scene_background(t_game_data *game_data)
 			game_data->background_layers[i].star_speed = BACKGROUND_LAYER_SPEED(i);
 			game_data->background_layers[i].star_char = BACKGROUND_LAYER_CHAR(i);
 			game_data->background_layers[i].star_color = BACKGROUND_LAYER_COLOR(i);
-			ft_game_init_background_layer(game_data, game_data->background_layers + i);
+			ft_game_init_background_layer(game_data->background_layers + i);
 		}
 	}
 
@@ -92,7 +95,7 @@ void	ft_game_render_scene_background(t_game_data *game_data)
 		ft_game_render_background_layer(game_data, game_data->background_layers + i);
 }
 
-void	ft_game_init_background_layer(t_game_data *game_data, t_background_layer *layer)
+void	ft_game_init_background_layer(t_background_layer *layer)
 {
 	layer->stars = malloc(sizeof(t_star) * layer->star_count);
 	for (int i = 0; i < layer->star_count; i++)
@@ -100,7 +103,6 @@ void	ft_game_init_background_layer(t_game_data *game_data, t_background_layer *l
 		layer->stars[i].x = rand() % SCENE_WIDTH;
 		layer->stars[i].y = rand() % SCENE_HEIGHT;
 	}
-	(void)game_data;
 }
 
 void	ft_game_render_background_layer(t_game_data *game_data, t_background_layer *layer)
@@ -172,7 +174,7 @@ void	ft_game_scene_size(t_game_data *game_data)
 	getmaxyx(stdscr, game_data->screen_height, game_data->screen_width);
 
 	// + 2 for the borders
-	if ((game_data->screen_height < SCENE_HEIGHT + SCENE_UI_HEIGHT + SCENE_VERTICAL_PADDING + 2) || (game_data->screen_width < SCENE_WIDTH + SCENE_HORIZONTAL_PADDING + 2))
+	if ((game_data->screen_height < SCENE_HEIGHT + SCENE_UI_HEIGHT + SCENE_VERTICAL_PADDING + 5) || (game_data->screen_width < SCENE_WIDTH + SCENE_HORIZONTAL_PADDING + 2))
 	{
 		game_data->available_screen_space = false;
 		return ;
@@ -181,4 +183,45 @@ void	ft_game_scene_size(t_game_data *game_data)
 	game_data->scene_y_origin = (game_data->screen_height - SCENE_HEIGHT - SCENE_UI_HEIGHT - SCENE_VERTICAL_PADDING - 1) / 2;
 	game_data->scene_x_origin = (game_data->screen_width - SCENE_WIDTH - SCENE_HORIZONTAL_PADDING - 1) / 2;
 	game_data->available_screen_space = true;
+}
+
+/**
+ * Render the game UI.
+ *
+ * @param game_data Game data.
+ */
+void	ft_game_render_ui(t_game_data *game_data)
+{
+	// Render HP bar
+	t_entity				*entity = entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP);
+	if (!entity)
+		return ;
+	t_entity_player_ship	*player = (t_entity_player_ship *)entity->data;
+	int						hp_bar_fill = (int) ((float) player->health / (float) PLAYER_HP(game_data->scenario) * 50.0);
+
+	mvprintw(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + 1, "HP: ");
+	mvaddch(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + 5, ACS_LTEE);
+	for (int i = 0; i < 50; i++)
+	{
+		if (i <= hp_bar_fill)
+			attron(COLOR_PAIR(BLUE));
+		else
+			attron(COLOR_PAIR(WHITE));
+		if (i == hp_bar_fill)
+			mvaddch(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + 6 + i, ACS_BOARD);
+		else
+			mvaddch(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + 6 + i, ACS_BLOCK);
+		if (i <= hp_bar_fill)
+			attroff(COLOR_PAIR(BLUE));
+		else
+			attroff(COLOR_PAIR(WHITE));
+	}
+	mvaddch(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + 56, ACS_RTEE);
+
+	// Render score
+	mvprintw(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + SCENE_WIDTH - 15, "Score: %d", player->score);
+
+	// Render time with .1 precision
+	double	seconds = game_data->frame_since_begin / TARGET_FPS;
+	mvprintw(game_data->scene_y_origin + SCENE_HEIGHT + 3, game_data->scene_x_origin + SCENE_WIDTH - 30, "Time: %.1fs", seconds);
 }

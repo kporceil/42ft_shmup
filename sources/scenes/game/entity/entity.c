@@ -176,6 +176,24 @@ t_entity	*entity_find_by_id(t_entity *node, int id)
 }
 
 /**
+ * Find the entity with the given type.
+ *
+ * @param node The node from which to start.
+ * @param type The type of the entity to find.
+ * @return The entity with the given type, or NULL if not found.
+ */
+t_entity	*entity_find_by_type(t_entity *node, t_entity_type type)
+{
+	while (node)
+	{
+		if (node->type == type)
+			return (node);
+		node = node->next;
+	}
+	return (NULL);
+}
+
+/**
  * Count entities with the given type.
  *
  * @param node The node from which to start.

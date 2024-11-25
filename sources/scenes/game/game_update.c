@@ -72,7 +72,7 @@ void ft_game_update(t_game_data *game_data)
 			case ENTITY_PLAYER_SHIP:
 			{
 				t_entity_player_ship *p_ship = (t_entity_player_ship *)entity->data;
-				if (p_ship->health <= 0)
+				if (p_ship->health <= 0 || p_ship->score < 0)
 				{
 					last_game_score = p_ship->score;
 					state = STATE_GAME_OVER;
@@ -123,7 +123,6 @@ void ft_game_update(t_game_data *game_data)
 			case ENTITY_ENEMY_SHIP:
 				if (entity->y > SCENE_HEIGHT + 1 || entity->next_y > SCENE_HEIGHT + 1 || entity->next_x < 0 || entity->next_x > SCENE_WIDTH)
 				{
-					// TODO: Handle player score
 					t_entity	*p_ship = entity_find_by_id(game_data->entities, 0);
 					((t_entity_player_ship *)p_ship->data)->score--;
 					entity->ft_unrender(entity, game_data);
@@ -144,7 +143,7 @@ void ft_game_controls(t_game_data *game_data)
 	t_entity *laser;
 
 	// Get player entity
-	entity = entity_find_by_id(game_data->entities, 0);
+	entity = entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP);
 	if (!entity)
 		return ;
 	// Prevent velocity from going below 0

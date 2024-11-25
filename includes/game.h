@@ -67,6 +67,7 @@ typedef struct	s_game_data
 	int					scene_y_origin;
 	int					scene_x_origin;
 	// TIMING SYSTEM
+	double				frame_since_begin;
 	double				frame_time;
 	struct timespec		frame_start;
 	struct timespec		frame_end;

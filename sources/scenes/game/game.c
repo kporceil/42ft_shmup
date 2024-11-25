@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 #include <stdbool.h>
 #include <ncurses.h>
@@ -37,6 +38,7 @@ int	ft_game(t_game_scenario scenario)
 	clear();
 	ft_game_scene_size(game_data);
 
+	last_game_score = 0;  // Reset last game score
 	entity_reset_id_counter();  // Reset entity ID counter
 	loop = true;  // Main loop flag
 	while (loop)
@@ -47,11 +49,34 @@ int	ft_game(t_game_scenario scenario)
 
 		ft_game_input(game_data);  // Handle input
 	
-		// TODO: Make a pause screen asking to resize the terminal
-		if (!game_data->available_screen_space)
+		if (!game_data->available_screen_space || game_data->paused)
 		{
-			state = STATE_EXIT;
-			break;
+			clear();
+			if (game_data->paused)
+			{
+				const char pause_text[] = "Game paused. Press <space> to resume.";
+				mvprintw(game_data->screen_height / 2, game_data->screen_width / 2 - strlen(pause_text) / 2, pause_text);
+				refresh();
+				while (getch() != 32)
+					;
+				game_data->paused = false;
+			}
+			else
+			{
+				const char resize_text[] = "Terminal too small. Resize the terminal to a bigger one to resume.";
+				mvprintw(game_data->screen_height / 2, game_data->screen_width / 2 - strlen(resize_text) / 2, resize_text);
+				refresh();
+				while (!game_data->available_screen_space)
+				{
+					while (getch() != KEY_RESIZE)
+						;
+					ft_game_scene_size(game_data);
+				}
+			}
+			game_data->resized = true;
+			clear();
+			clock_gettime(CLOCK_MONOTONIC, &game_data->frame_start);
+			game_data->frame_time = (double) (game_data->frame_start.tv_sec * NS_PER_SECOND + game_data->frame_start.tv_nsec);
 		}
 		
 		ft_game_update(game_data);  // Main game logic
@@ -71,13 +96,12 @@ int	ft_game(t_game_scenario scenario)
 			game_data->delta_time = 1.0;  // Reset delta time to 1.0 after sleeping
 		}
 		// Can't keep up trigger
-#ifdef DEBUG
 		if (game_data->delta_time > 1.0)
 		{
 			mvprintw(1, 0, "[WARN] Can't keep up! Delta time: %f", game_data->delta_time);
 		}
 		mvprintw(0, 0, "FPS: %f - Frame time: %f ms", 1.0 / (game_data->delta_time * TARGET_FRAME_TIME_NS / NS_PER_SECOND), game_data->delta_time_ns / 1000000.0);
-#endif
+		game_data->frame_since_begin += game_data->delta_time;
 	}
 	ft_game_del(game_data);  // Free game data
 	return (0);

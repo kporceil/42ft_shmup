@@ -30,22 +30,22 @@ void	ft_game_input(t_game_data *game_data)
 	{
 		// Movement keys
 		case KEY_UP:
-			((t_entity_player_ship *) entity_find_by_id(game_data->entities, 0)->data)->input = PLAYER_INPUT_MOVE_UP;
+			((t_entity_player_ship *) entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP)->data)->input = PLAYER_INPUT_MOVE_UP;
 			break;
 		case KEY_DOWN:
-			((t_entity_player_ship *) entity_find_by_id(game_data->entities, 0)->data)->input = PLAYER_INPUT_MOVE_DOWN;
+			((t_entity_player_ship *) entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP)->data)->input = PLAYER_INPUT_MOVE_DOWN;
 			break;
 		case KEY_LEFT:
-			((t_entity_player_ship *) entity_find_by_id(game_data->entities, 0)->data)->input = PLAYER_INPUT_MOVE_LEFT;
+			((t_entity_player_ship *) entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP)->data)->input = PLAYER_INPUT_MOVE_LEFT;
 			break;
 		case KEY_RIGHT:
-			((t_entity_player_ship *) entity_find_by_id(game_data->entities, 0)->data)->input = PLAYER_INPUT_MOVE_RIGHT;
+			((t_entity_player_ship *) entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP)->data)->input = PLAYER_INPUT_MOVE_RIGHT;
 			break;
 		// Shoot keys
 		case 32:
 		case KEY_ENTER:
 		case 10:
-			((t_entity_player_ship *) entity_find_by_id(game_data->entities, 0)->data)->input = PLAYER_INPUT_FIRE;
+			((t_entity_player_ship *) entity_find_by_type(game_data->entities, ENTITY_PLAYER_SHIP)->data)->input = PLAYER_INPUT_FIRE;
 			break;
 		// On resize
 		case KEY_RESIZE:

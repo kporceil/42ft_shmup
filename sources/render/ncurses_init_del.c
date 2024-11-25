@@ -42,6 +42,8 @@ void	ft_init_ncurses()
 	init_pair(MAGENTA, COLOR_MAGENTA, COLOR_BLACK);
 	init_pair(RED_ON_MAGENTA, COLOR_RED, COLOR_MAGENTA);
 
+	set_escdelay(1);  // Set escape delay to 1ms
+
 	clear();  // Clear screen
 }
 
