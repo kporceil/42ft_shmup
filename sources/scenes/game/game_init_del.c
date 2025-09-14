@@ -31,10 +31,12 @@ t_game_data	*ft_game_init(t_game_scenario scenario)
 	if (!game_data)
 		return (NULL);
 	game_data->scenario = scenario;
+	game_data->delta_time = 0;
+	game_data->delta_time_ns = 0;
 	// Initialize entities with main player entity
 	game_data->entities = init_entity(ENTITY_PLAYER_SHIP, game_data);
 	game_data->entities->y = SCENE_HEIGHT - 10;
-	game_data->entities->x = SCENE_WIDTH / 2;
+	game_data->entities->x = SCENE_WIDTH * 0.5;
 	game_data->background_layers[0].star_count = 0;
 	game_data->background_layers[1].star_count = 0;
 	game_data->background_layers[2].star_count = 0;

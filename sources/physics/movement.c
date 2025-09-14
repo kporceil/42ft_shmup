@@ -22,8 +22,6 @@ float	ft_accelerate(float velocity, float acceleration, float delta_time)
 
 void	ft_move(float *y, float *x, float velocity, float angle, float delta_time)
 {
-	if (velocity == 0)
-		return ;
 	*y += velocity * sinf(angle) * delta_time;
 	*x += velocity * cosf(angle) * delta_time;
 }

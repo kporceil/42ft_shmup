@@ -26,6 +26,8 @@ void	*init_entity_player_ship(t_game_data *game_data)
 	entity = malloc(sizeof(t_entity_player_ship));
 	if (!entity)
 		return (NULL);
+	entity->input = 0;
+	entity->cooldown = 0;
 	entity->type = PLAYER_KEYBOARD;
 	entity->score = 0;
 	entity->health = PLAYER_HP(game_data->scenario);

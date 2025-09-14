@@ -52,8 +52,12 @@ void	ft_init_ncurses()
  */
 void	ft_del_ncurses()
 {
-	clear();
-	refresh();
-	endwin();  // Ends console cursor mode
-	
+	nodelay(stdscr, false);    // Restaurer le comportement par défaut
+    keypad(stdscr, false);     // Désactiver keypad
+    echo();                    // Restaurer echo
+    nocbreak();                // Restaurer le mode normal
+    curs_set(1);              // Réafficher le curseur
+    clear();
+    refresh();
+    endwin();
 }
