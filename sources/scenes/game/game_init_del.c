@@ -34,6 +34,7 @@ t_game_data	*ft_game_init(t_game_scenario scenario)
 	game_data->delta_time = 0;
 	game_data->delta_time_ns = 0;
 	// Initialize entities with main player entity
+	entity_reset_id_counter();
 	game_data->entities = init_entity(ENTITY_PLAYER_SHIP, game_data);
 	game_data->entities->y = SCENE_HEIGHT - 10;
 	game_data->entities->x = SCENE_WIDTH * 0.5;
